@@ -1,0 +1,99 @@
+@import "../../style/sass/mixin";
+
+.productItem {
+    margin-bottom: 35px;
+    &:hover {
+        .productHover {
+            li {
+                opacity: 1;
+                top: 0;
+            }
+        }
+    }
+}
+
+.productHover {
+    position: absolute;
+    text-align: center;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    
+    li {
+        list-style: none;
+        display: inline-block;
+        position: relative;
+        opacity: 1;
+        margin-right: 10px;
+        top: 120px;
+        &:nth-child(1){
+            @include transition(all 0.4s ease 0.1s);
+        }
+        &:hover{
+            a {
+                background: #ff0000;
+                span{
+                    color: #fff;
+                    -webkit-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
+            }
+            
+        }
+
+        a {
+            text-align: center;
+            font-size: 18px;
+            display: block;
+            background: #525050;
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+            line-height: 48px;
+            color: #111111;
+            @include transition(all 0.5s);
+
+            span{
+                position: relative;
+                display: inline-block;
+                
+            }
+        }
+    }
+}
+
+.productItemPicture {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.productItemText {
+    text-align: center;
+    padding-top: 22px;
+    h6 {
+        a {
+            font-size: 14px;
+            color: #111111;
+        }
+    }
+
+    .rating {
+        line-height: 18px;
+        margin-bottom: 5px;
+        i {
+            font-size: 10px;
+            color: #ffff00;
+            margin-right: 2px;
+        }
+    }
+
+    .productPrice {
+        color: #111;
+        font-weight: 600;
+        span {
+            font-size: 14px;
+            margin-left: 4px;
+        }
+    }
+}

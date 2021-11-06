@@ -1,0 +1,114 @@
+.sidebarCategories {
+    margin-bottom: 50px;
+
+    .sectionTitle {
+        h4 {
+            font-size: 18px;
+            color: #a9a9a9;
+            text-transform: uppercase;
+            &:last-child {
+                &::after {
+                    display: block;
+                }
+            }
+
+            &::after {
+                position: absolute;
+                background: #ff0000;
+                content: "";
+                left: 0;
+                bottom: 0;
+                height: 2px;
+                width: 70px;
+            }
+        }
+    }
+}
+
+.categoryAccordion {
+    .card {
+        border: none;
+        border-radius: 0;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #f2f2f2 !important;
+        margin-bottom: 12px;
+    
+        &:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none !important;
+        }
+    }
+
+    .cardHeading {
+        cursor: pointer;
+    
+        a {
+            position: relative;
+            font-size: 14px;
+            font-weight: 500;
+            color: black;
+            display: block;
+        }
+    }
+
+    .cardBody {
+        padding-left: 0;
+        padding-top: 6px;
+        padding-bottom: 0;
+    
+        li {
+            list-style: none;
+            position: relative;
+            padding-left: 16px;
+    
+          &:before {
+            position: absolute;
+            left: 4px;
+            top: 14px;
+            height: 1px;
+            width: 4px;
+            background: #666666;
+            content: "";
+        }
+    
+        a {
+            font-size: 14px;
+            color: #666666;
+            line-height: 30px;
+        }
+        }
+    }
+}
+
+.categoryAccordion .cardHeading a::after,
+.categoryAccordion .cardHeading > a:active[aria-expanded="false"]::after {
+  content: "\f107";
+  font-size: 14px;
+  font-family: "FontAwesome";
+  color: #666666;
+  position: absolute;
+  right: 30px;
+  top: 0px;
+}
+
+.categoryAccordion .cardHeading:active a::after {
+  content: "\f106";
+  font-size: 14px;
+  font-family: "FontAwesome";
+  color: #666666;
+  position: absolute;
+  right: 30px;
+  top: -1px;
+}
+
+.categoryAccordion .cardHeading a[aria-expanded="true"]::after,
+.categoryAccordion .cardHeading > a:active::after {
+  content: "\f106";
+  font-size: 14px;
+  font-family: "FontAwesome";
+  color: #666666;
+  position: absolute;
+  right: 30px;
+  top: -1px;
+}
