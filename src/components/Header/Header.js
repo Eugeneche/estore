@@ -1,9 +1,8 @@
 import styles from './_Header.module.scss'
 import main_logo from '../../assets/img/main_logo.png'
+import MainMenu from '../MainMenu/MainMenu'
 
 const Header = () => {
-
-    const categoriesMenu = ['Home', 'Men', 'Women', 'Kids', 'Accessories']
 
     return (
         <header className={styles.header}>
@@ -39,17 +38,8 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className={styles.bottomRow}>
-                <div className="container"> 
-                    <nav className={styles.navHeader}>
-                        <ul className={styles.categoriesMenu}>                    
-                            {categoriesMenu.map(item => {
-                                return <li key={item}><a href="/">{item}</a></li>
-                            })}
-                        </ul>
-                    </nav>
-                </div>
-            </div>           
+            <MainMenu />
+            
         </header>
     )
 }

@@ -1,6 +1,6 @@
 import Header from './components/Header/Header'
-import MainContainer from './components/MainContainer/MainContainer';
-import './App.css';
+import MainContainer from './components/MainContainer/MainContainer'
+import './App.css'
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Header />
       <MainContainer />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

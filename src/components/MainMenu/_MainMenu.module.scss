@@ -1,0 +1,59 @@
+@import "../../../src/style/sass/mixin.scss";
+@import "../../../src/style/sass/variables";
+
+.bottomRow {
+    background: #0e0e0e;
+  
+    .categoriesMenu {
+      display: flex;
+      padding-left: 0;
+      align-items: center;
+      height: 30px;
+      margin-bottom: 0;
+    }
+    
+    .categoriesMenu {
+      li {
+        list-style: none;
+        margin-right: 20px;
+  
+        &:active {
+          a {
+            &::after {
+              -webkit-transform: scale(1);
+              transform: scale(1);
+            }
+          }
+        }
+  
+        &:hover {
+          a {     
+            color: #adffa6;
+            &::after {
+              -webkit-transform: scale(1);
+              transform: scale(1);
+            }
+          }
+        }
+  
+        a {
+          text-decoration: none;       
+          color: #ffffff;
+          position: relative;
+  
+          &::after {
+            position: absolute;
+            background:red;
+            content: "";
+            left:0;
+            bottom: 0;
+            width: 100%;
+            height:2px;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            @include transition(all, 0.5s);
+          }
+        }
+      }
+    }
+  }
