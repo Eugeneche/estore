@@ -1,8 +1,11 @@
 import styles from './_Header.module.scss'
 import main_logo from '../../assets/img/main_logo.png'
 import MainMenu from '../MainMenu/MainMenu'
+import { useSelector } from 'react-redux'
 
 const Header = () => {
+
+    const { cart } = useSelector(state => state)
 
     return (
         <header className={styles.header}>
@@ -24,14 +27,16 @@ const Header = () => {
                         </button>
                         </div>
                         <div className={styles.userBlock}>
-                            <div className={styles.auth}>
+                            <div>
                                 <i className="far fa-user" style={{color: 'lightgrey'}}></i>
                             </div>
-                            <div className={styles.favourite}>
+                            <div>
                                 <i className="fas fa-heart" style={{color: 'red'}}></i>
                             </div>
-                            <div className={styles.cart}>                               
+                            <div>                               
                                 <i className="fas fa-shopping-cart" style={{color: 'white'}}></i>
+                                {cart.cart.length > 0 && 
+                                <div className={styles.cartQuantity}>{cart.totalQuantities}</div>}                              
                             </div>
                         </div>
                     </nav>

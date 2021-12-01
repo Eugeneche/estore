@@ -2,14 +2,8 @@ import * as actionTypes from '../../actions/products/types'
 
 const initialState = {
     categories: [],
-    products: [
-/*         {
-            imgSrc: '',
-            name: '',
-            rating: '',
-            price: null
-        } */
-    ]
+    products: [],
+    filteredProducts: []
 }
 
 export const products = (state = initialState, action) => {
@@ -24,6 +18,13 @@ export const products = (state = initialState, action) => {
             return {
                 ...state,
                 products: action.payload
+            }
+        case actionTypes.FILTER_PRODUCT:
+            //console.log(action.payload)
+            return {
+                ...state,
+                filteredProducts: action.payload
+                
             }
         default: 
         return state

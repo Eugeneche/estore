@@ -1,37 +1,33 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { getProductItem } from '../../redux/actions/products/products'
+import { NavLink } from 'react-router-dom'
+import * as actions from '../../redux/actions/actions'
 import styles from './_Product.module.scss'
-import * as productAPI from '../../APIs/APIs'
-
-
-/* const products = [
-    // the alternative way to: import goodsImg from '../../assets/img/shop/shop-1.jpg'
-    //require("../../assets/img/shop/shop-1.jpg").default,
-    require("../../assets/img/shop/shop-2.jpg").default,
-    require("../../assets/img/shop/shop-3.jpg").default,
-    require("../../assets/img/shop/shop-4.jpg").default,
-    require("../../assets/img/shop/shop-5.jpg").default,
-    require("../../assets/img/shop/shop-6.jpg").default,
-    require("../../assets/img/shop/shop-7.jpg").default,
-    require("../../assets/img/shop/shop-8.jpg").default,
-    require("../../assets/img/shop/shop-9.jpg").default,
-] */
 
 const Product = () => {
 
     const dispatch = useDispatch()
-    const {products: {products}} = useSelector(store => store)
-    useEffect(() => {
-        dispatch(getProductItem())
-    }, [])
+    const {products: {products, filteredProducts}, cart} = useSelector(store => store)
 
-    console.log(products)
+    useEffect(() => {
+        dispatch(actions.getProductItem())
+    }, [dispatch])
+
+    filteredProducts.length === 0 && products.map(item => filteredProducts.push(item))
+    
+/*     useEffect(() => {
+
+    }, [cart]) */
+    
+    const addToCart = (item) => {
+        dispatch(actions.addItemToCart(item))
+    }
+
     return (
         <div className="row">
 
-            {products.map((item, idx) => {
+            {filteredProducts.map(item => {
 
                 return (
                     <div className="col-lg-3 col-md-6" key={item.id}>
@@ -40,13 +36,16 @@ const Product = () => {
                                 <img className={styles.productItemPic} src={item.src} alt={item.name}/>
                                 <ul className={styles.productHover}>
                                     <li>
-                                        <a href={item.src}><span className="fa fa-arrows-alt"/></a>                                       
+                                        <NavLink to='/'><span className="fa fa-arrows-alt"/></NavLink>                                       
+                                    </li>
+                                    <li onClick={() => addToCart(item)}>
+                                        <NavLink to='/'><span className="fas fa-shopping-cart"/></NavLink>                                      
                                     </li>
                                 </ul>
                             </div>             
                             <div className={styles.productItemText}>
                                 <h6>
-                                    <a href="/">{item.name}</a>
+                                    <NavLink to='/'>{item.name}</NavLink>
                                 </h6>
                                 <div className={styles.rating}>
                                     <i className="fa fa-star"/>
