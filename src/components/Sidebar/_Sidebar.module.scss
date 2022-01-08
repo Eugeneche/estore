@@ -112,3 +112,17 @@
   right: 30px;
   top: -1px;
 }
+
+.btnSidebar {
+    width: 80%;
+    font-size: 14px;
+    color: #000;
+    text-transform: uppercase;
+    padding: 5px;
+    border: 1px solid #778899;
+    border-radius: 3px;
+    &:hover {
+        background: #198754;
+        color: #a7a7a7;
+    }
+}

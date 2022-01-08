@@ -20,7 +20,6 @@ export const products = (state = initialState, action) => {
                 products: action.payload
             }
         case actionTypes.FILTER_PRODUCT:
-            //console.log(action.payload)
             return {
                 ...state,
                 filteredProducts: action.payload

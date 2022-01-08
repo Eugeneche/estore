@@ -26,7 +26,6 @@ export const getProductCategory = () => {
                         createdatetime: el.createdatetime
                     }
                     return currentSubCategories.push(subCategory)
-                    //return currentSubCategories
                 })
                 return currentSubCategories
             })
@@ -79,7 +78,7 @@ const _getProductItem = (data) => {
 }
 
 const _getFilteredProducts = (data) => {
-    //console.log(data)
+
     return {
         type: actionTypes.FILTER_PRODUCT,
         payload: data
@@ -89,9 +88,7 @@ const _getFilteredProducts = (data) => {
 export const applyFilter = (filterParams, productData) => {
     return async (dispatch) => {
         let query = buildQuery(filterParams)
-        dispatch(_getFilteredProducts(filterByCategory(productData, query)))
-        //console.log(productData)
-        
+        dispatch(_getFilteredProducts(filterGoods(productData, query))) 
     }
 }
 
@@ -100,20 +97,28 @@ const buildQuery = (fiterData) => {
     for (let key in fiterData) {
         queryData[key] = fiterData[key]
     }
-    console.log(queryData)
     return queryData
 }
 
-function filterByCategory(allProducts, queryData) {
+function filterGoods(allProducts, queryData) {
+    let prices = ['price']
     let filteredProducts = allProducts.filter(item => {
         for (let key in queryData) {
-            if (queryData[key] === undefined) return false
+            console.log(item[key])
+            console.log(queryData[key]['min'])
+            if (queryData[key] === undefined) {
+                return false
+            } else if (prices.includes(key)) {
+                if (queryData[key]['min'] !== null && item[key] < queryData[key]['min']) {
+                    return false
+                }
+                if (queryData[key]['max'] !== null && item[key] > queryData[key]['max']) {
+                    return false
+                }
+            }
             else if (!queryData[key].includes(item[key])) return false
         } 
         return true
     })
-    //console.log(allProducts)
-    //console.log(queryData)
-    //console.log(filteredProducts)
     return filteredProducts
 }
