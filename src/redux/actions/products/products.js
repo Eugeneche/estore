@@ -104,8 +104,6 @@ function filterGoods(allProducts, queryData) {
     let prices = ['price']
     let filteredProducts = allProducts.filter(item => {
         for (let key in queryData) {
-            console.log(item[key])
-            console.log(queryData[key]['min'])
             if (queryData[key] === undefined) {
                 return false
             } else if (prices.includes(key)) {

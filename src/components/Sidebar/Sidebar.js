@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 //import { NavLink } from 'react-router-dom'
 import styles from './_Sidebar.module.scss'
 import * as actions from '../../redux/actions/products/products'
+import { NavLink } from 'react-router-dom'
 
 const Sidebar = () => {
 
@@ -29,14 +30,12 @@ const Sidebar = () => {
 
         let filteredCategories = [...categoryFilter]
 
-        let unchekedIndex = filteredCategories.findIndex(item => item.id == e.target.value)
+        let unchekedIndex = filteredCategories.findIndex(item => item.id === +e.target.value)
         !e.target.checked && filteredCategories.splice(unchekedIndex, 1)
         
         e.target.checked && filteredCategories.push(subCat)
         applyCategoriesFilter(filteredCategories)
-        setCategoryFilter(filteredCategories)
-
-        console.log(categoryFilter)
+        setCategoryFilter(filteredCategories)      
     }
 
     const setMinRange = (e) => {
@@ -68,7 +67,6 @@ const Sidebar = () => {
         setFilter({})
         setCategoryFilter([])
         dispatch(actions.applyFilter(null, products.products))
-        console.log(categoryFilter)
     }
     
     return (
@@ -84,7 +82,7 @@ const Sidebar = () => {
                         <div className={styles.accordion}>
                             <div className={styles.card}>
                                 <div className={styles.cardHeading}>
-                                    <a>{catHead.category}</a>
+                                    <NavLink to="/">{catHead.category}</NavLink>
                                 </div>
                                 <div className={styles.cardBody}>
                                     <ul>

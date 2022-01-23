@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as actions from '../../redux/actions/actions'
 import styles from './_Product.module.scss'
 
 const Product = () => {
 
     const dispatch = useDispatch()
-    const {products: {products, filteredProducts}, cart} = useSelector(store => store)
+    const {products: {products, filteredProducts}/* , cart */} = useSelector(store => store)
 
     useEffect(() => {
         dispatch(actions.getProductItem())
@@ -36,16 +36,20 @@ const Product = () => {
                                 <img className={styles.productItemPic} src={item.src} alt={item.name}/>
                                 <ul className={styles.productHover}>
                                     <li>
-                                        <NavLink to='/'><span className="fa fa-arrows-alt"/></NavLink>                                       
+                                        <Link to={"/product-" + item.id} state={{item}}>
+                                            <span className="fa fa-arrows-alt"/>
+                                        </Link>                                       
                                     </li>
                                     <li onClick={() => addToCart(item)}>
-                                        <NavLink to='/'><span className="fas fa-shopping-cart"/></NavLink>                                      
+                                        <Link to={"/product-" + item.id} state={{item}}>
+                                            <span className="fas fa-shopping-cart"/>
+                                        </Link>                                      
                                     </li>
                                 </ul>
                             </div>             
                             <div className={styles.productItemText}>
                                 <h6>
-                                    <NavLink to='/'>{item.name}</NavLink>
+                                    <Link to={"/product-" + item.id} state={{item}}>{item.name}</Link>
                                 </h6>
                                 <div className={styles.rating}>
                                     <i className="fa fa-star"/>
@@ -54,13 +58,12 @@ const Product = () => {
                                     <i className="fa fa-star"/>
                                     <i className="fa fa-star"/>
                                 </div>
-                                <div className={styles.productPrice}>{item.price}</div>
+                                <div className={styles.productPrice}>${item.price}</div>
                             </div>
                         </div>
                     </div>
                 )
             })}
-            
 
         </div>
     )
