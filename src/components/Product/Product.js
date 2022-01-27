@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import * as actions from '../../redux/actions/actions'
 import styles from './_Product.module.scss'
@@ -8,8 +7,8 @@ import styles from './_Product.module.scss'
 const Product = () => {
 
     const dispatch = useDispatch()
-    const {products: {products, filteredProducts}/* , cart */} = useSelector(store => store)
-
+    const {products: {products, filteredProducts}/* , cart */ } = useSelector(store => store)
+    
     useEffect(() => {
         dispatch(actions.getProductItem())
     }, [dispatch])
@@ -17,11 +16,12 @@ const Product = () => {
     filteredProducts.length === 0 && products.map(item => filteredProducts.push(item))
     
 /*     useEffect(() => {
-
+        console.log(cart)
     }, [cart]) */
     
     const addToCart = (item) => {
         dispatch(actions.addItemToCart(item))
+
     }
 
     return (
