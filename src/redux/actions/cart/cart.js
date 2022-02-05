@@ -1,5 +1,4 @@
-//import axios from 'axios'
-import * as actionTypes from './types'
+import { ActionTypes } from './types'
 
 export const addItemToCart = (data) => {
     return async (dispatch) => {
@@ -9,7 +8,7 @@ export const addItemToCart = (data) => {
 
 const _addItemToCart = (itemData) => {
     return {
-        type: actionTypes.ADD_ITEM_CART,
+        type: ActionTypes.ADD_ITEM_CART,
         payload: itemData
     }
 }

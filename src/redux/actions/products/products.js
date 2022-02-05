@@ -1,4 +1,4 @@
-import * as actionTypes from './types'
+import { ActionTypes } from './types'
 import axios from 'axios'
 
 
@@ -31,7 +31,7 @@ export const getProductCategory = () => {
             })
 
             return dispatch({
-                type: actionTypes.PRODUCT_CATEGORY,
+                type: ActionTypes.PRODUCT_CATEGORY,
                 payload: parentCategories
             })
         }).catch(err => console.log('Response error', err))
@@ -72,7 +72,7 @@ export const getProductItem = () => {
 
 const _getProductItem = (data) => {
     return {
-        type: actionTypes.PRODUCT_ITEM,
+        type: ActionTypes.PRODUCT_ITEM,
         payload: data
     }
 }
@@ -80,7 +80,7 @@ const _getProductItem = (data) => {
 const _getFilteredProducts = (data) => {
 
     return {
-        type: actionTypes.FILTER_PRODUCT,
+        type: ActionTypes.FILTER_PRODUCT,
         payload: data
     }
 }
